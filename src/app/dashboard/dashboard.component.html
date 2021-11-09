@@ -1,0 +1,21 @@
+<div class="container dashboard my-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-6 d-flex justify-content-center mb-4">
+      <img [src]="urlImagen" alt="imagen-clima" class="img-fluid w-50">
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <input type="text" placeholder="Nombre de la ciudad" class="form-control form-control-lg" [(ngModel)]="ciudad" required>
+      <button type="button" class="btn btn-primary btn-lg mt-4 w-100" (click)="getWheater()" [disabled]="ciudad === ''">CONSULTAR CLIMA</button>
+      <br><br>
+      <div class="card mb-3" *ngIf="query">
+        <div class="card-body">
+          <p><b>Pais: </b>{{pais}}</p>
+          <p><b>Ciudad: </b>{{nombre_ciudad | uppercase}}</p>
+          <p><b>Temperatura: </b>{{temperatura | number:'1.2-2'}}°C</p>
+          <p><b>Humedad: </b>{{humedad}}%</p>
+          <p><b>Clima: </b>{{clima | uppercase}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
