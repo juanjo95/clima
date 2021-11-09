@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClimaService } from '../services/clima.service';
 import { Clima } from '../interfaces/clima.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,7 +37,14 @@ export class DashboardComponent implements OnInit {
       this.pais = data.sys.country;
 
       this.ciudad = '';
-    },error => console.log(error));
+    },error => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'La ciudad no existe'
+      });
+      this.ciudad = '';
+    });
 
   }
 
